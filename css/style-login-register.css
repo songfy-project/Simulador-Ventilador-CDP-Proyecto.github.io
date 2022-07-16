@@ -1,0 +1,198 @@
+:root{
+
+    --bgcolor: #323030;
+}
+
+*{
+
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+
+}
+
+body{
+
+   background-image: url("https://i.ibb.co/PZX3Xcg/oooscillate.png");
+   background-repeat: no-repeat;
+    background-attachment: contain;
+	background-size: cover;
+    background-color: #121212;
+}
+
+main{
+    width: 100%;
+    padding: 20px;
+    margin: auto;
+    margin-top: 100px;
+}
+
+.contenedor__todo{
+    width: 100%;
+    max-width: 800px;
+    margin: auto;
+    position: relative;
+}
+
+.caja__trasera{
+    width: 100%;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: center;
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    background-image: url('https://i.ibb.co/y09NFdz/bg-tarjeta.png');
+    background-repeat: no-repeat;
+    background-attachment: contain;
+	background-size: cover;
+    position: relative;
+    top: 15vh;
+    border-radius: 20px;
+
+}
+
+.caja__trasera div{
+    margin: 100px 40px;
+    color: white;
+    transition: all 500ms;
+}
+
+
+.caja__trasera div p,
+.caja__trasera button{
+    margin-top: 30px;
+    filter: drop-shadow(.5rem .5rem .8rem rgb(0, 0, 0));
+    transition: all 0.4s;
+}
+
+.caja__trasera div h3{
+    font-weight: 400;
+    font-size: 26px;
+    filter: drop-shadow(.5rem .5rem .7rem rgb(0, 0, 0));
+}
+
+.caja__trasera div p{
+    font-size: 16px;
+    font-weight: 300;
+}
+
+.caja__trasera a#btn-register, #btn-login{
+    padding: 10px 40px;
+    border: 2px solid #fff;
+    font-size: 14px;
+    background: transparent;
+    font-weight: 600;
+    cursor: pointer;
+    color: white;
+    outline: none;
+    transition: all 300ms;
+    text-align: center;
+    text-decoration: none;
+   
+}
+
+.caja__trasera a#btn-register:hover{
+    background: #fff;
+    color: #c946fd;
+}
+
+.caja__trasera a#btn-login:hover{
+    background: #fff;
+    color: #c946fd;
+}
+
+/*Formularios*/
+
+.contenedor__login-register{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 380px;
+    position: relative;
+    top: -185px;
+    left: 1px;
+
+    
+}
+
+.contenedor__login-register form{
+    width: 100%;
+    padding: 80px 20px;
+    background: white;
+    position: absolute;
+    border-radius: 20px;
+}
+
+.contenedor__login-register form h2{
+    font-size: 30px;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #46A2FD;
+}
+
+.contenedor__login-register form input{
+    width: 100%;
+    margin-top: 20px;
+    padding: 10px;
+    border: none;
+    background: #F2F2F2;
+    font-size: 16px;
+    outline: none;
+   
+}
+
+.contenedor__login-register form h1{
+    position: relative;
+    top: -40px;
+}
+
+.contenedor__login-register form input.btn-primary{
+    padding: 12px 40px;
+    margin-top: 40px;
+    border: none;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    color: #e7dbec;
+    outline: none;
+    background-image: url('https://i.ibb.co/y09NFdz/bg-tarjeta.png');
+
+}
+
+
+
+
+.formulario__login{
+    opacity: 1;
+    display: block;
+    height: 85vh;
+    position: relative;
+    top: -40vh;
+    left: -14vw;
+    transition: all 0.4s;
+    z-index: 1;
+}
+
+.formulario__register{
+
+    z-index: 0;
+
+    transition: all 0.4s;
+}
+
+
+.caja__trasera-login{
+
+width: 250px;
+height: 26vh;
+position: relative;
+left: 15vw;
+display: flex;
+flex-direction: column;
+justify-content: center;
+border-radius: 20px;
+
+
+}
+
+

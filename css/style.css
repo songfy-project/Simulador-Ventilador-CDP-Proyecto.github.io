@@ -1,0 +1,65 @@
+
+body {
+    display: grid;
+    height: 100vh;
+    grid-template: auto 1fr auto / auto 1fr auto
+  }
+  
+
+  
+  header {
+    background: black;
+    padding: .4rem;
+    grid-column: 1 / 4;
+
+    display: flex;
+    justify-content: space-between;
+    color: azure;
+
+  }
+  
+  .left-sidebar {
+    background-image: url("https://i.ibb.co/Z1NLR3g/ffflux-3.png");
+    background-repeat: no-repeat;
+    background-attachment: contain;
+	background-size: cover;
+
+    grid-column: 1 / 2;
+    width: 20vw;
+  }
+  
+  main {
+    
+    background-image: url("https://i.ibb.co/Xx6pgSt/ffflux-4.png");
+    background-repeat: no-repeat;
+    background-attachment: contain;
+	background-size: cover;
+
+    grid-column: 2 / 3;
+    height: 100vh;
+  }
+  
+  .right-sidebar {
+    background-image: url("https://i.ibb.co/Z1NLR3g/ffflux-3.png");
+    background-repeat: no-repeat;
+    background-attachment: contain;
+	background-size: cover;
+
+    grid-column: 3 / 4;
+  }
+  
+  footer {
+    background: wheat;
+    padding: 2rem;
+    text-align: center;
+    grid-column: 1 / 4;
+  }
+  
+  body {
+    font-family: system-ui, sans-serif;
+  }
+  
+  .left-sidebar,
+  .right-sidebar {
+    padding: 1rem;
+  }
