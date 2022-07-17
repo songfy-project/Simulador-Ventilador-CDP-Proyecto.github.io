@@ -21,12 +21,19 @@
             <img src="assets/SOngfy.png" class="img-fluid" width="150px" alt="">
         </div>
 
-        <div id="sesion">
-            <h3>Bienvenido: <span id="usuario"></h3>
-            <a href='#' id='cerrar-sesion'>Cerrar Sesion</a>
-        </div>
-        
-
+        <form name="login"> 
+            <table width="200" > 
+              <tr> 
+                <td><span class="cnt"> 
+                <div id="sesion">
+                    <label for="usuariolabel">Hola! Bienvenid@: </label>
+                    <span id="aqui"></span>
+                    <a href='#' id='cerrar-sesion'>Cerrar Sesion</a>
+                </span>
+                </td> 
+              </tr>   
+            </table> 
+       </form>
     </header>
 
     <div class="left-sidebar" >Left Sidebar</div>
@@ -40,13 +47,17 @@
 
     <script>
         //colocar los valores dentro del html
-        $('#sesion #usuario').text(localStorage.usuario);   
+        $('#sesion #usuario').text(localStorage.usuario);
 
         //Cerrar sesion 
         $('#cerrar-sesion').click(function(){
             localStorage.clear();
             window.location = "login_register.html";
         });
+
+        var c =  localStorage.usuario
+        document.getElementById("aqui").textContent = c;
+
     </script>
 
 
