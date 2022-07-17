@@ -28,7 +28,7 @@
                 <div id="sesion">
                     <label for="usuariolabel">Hola! Bienvenid@: </label>
                     <span id="aqui"></span>
-                    <a href='#' id='cerrar-sesion'>Cerrar Sesion</a>
+                    <a href='#' id='registrate'>Registrate</a>
                 </span>
                 </td> 
               </tr>   
@@ -48,15 +48,42 @@
     <script>
         //colocar los valores dentro del html
         $('#sesion #usuario').text(localStorage.usuario);
+        const btnreg = document.querySelector('a#registrate');
+   
+    
 
-        //Cerrar sesion 
-        $('#cerrar-sesion').click(function(){
+        var c =  localStorage.usuario
+
+        if(typeof c !== 'undefined'){
+
+       
+            btnreg.textContent = "Cerrar sesion";
+         //Cerrar sesion 
+        $('#registrate').click(function(){
+           
+           
             localStorage.clear();
             window.location = "login_register.html";
         });
 
-        var c =  localStorage.usuario
+        alert("funciona");
+      
+
+
+        }
+
+        $('#registrate').click(function(){
+            window.location = "login_register.html";
+        });
+
+
         document.getElementById("aqui").textContent = c;
+
+        window.addEventListener('beforeunload', function (e) {
+       
+       localStorage.clear();
+   });
+
 
     </script>
 
