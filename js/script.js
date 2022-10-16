@@ -76,19 +76,24 @@ const CalularDatos = () =>{
 
 
     /* Trabajo Rotacional */
-
+    let trabajoRotacionalCalculo = 1/2 * inerciaTotal * Math.pow(f,2);
+    trabajoRotacional.value = trabajoRotacionalCalculo.toFixed(3);
 
 
     /* Potencia */
+    let potenciaCalculo = TorqueCalculo * velocidadAM;
+    potencia.value = potenciaCalculo.toFixed(3);
 
 
 
 
     /* Conservacion Energia */
-
+    conservacionEnergia.value = energiaCineticaCalculo.toFixed(3);
 
 
     /* Momento Angular */
+    MomentoAngularCalculo = inerciaTotal * f;
+    MomentoAngular.value = MomentoAngularCalculo.toFixed(3);
 
     
 
