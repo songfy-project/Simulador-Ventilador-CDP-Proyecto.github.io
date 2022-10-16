@@ -1,98 +1,222 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Songfy</title>
-    <link rel="stylesheet" href="css/style.css">
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>Simulador CDP</title>
+  </head>
+  <body>
+    <div class="parent">
+      <header class="blue section">Proyecto Fase I Simulador</header>
 
-    <!-- Agregando Bootstrap 5.2 -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+      <main class="coral section">
+        <div class="bar-left">
+          <div class="img-ventilador">
+            <img src="assets/ventilador.png" alt="" width="260px" />
+          </div>
 
-
-    <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
-
-</head>
-<body>
-
-
-    <header>
-        <div id="logo">
-            <img src="assets/SOngfy.png" class="img-fluid" width="150px" alt="">
+          <div class="ventilador">
+            <div class="aspas" id="aspa-giratoria">
+              <img src="assets/aspas.png" alt="" width="290px" />
+            </div>
+          </div>
         </div>
 
-        <form name="login"> 
-            <table width="200" > 
-              <tr> 
-                <td><span class="cnt"> 
-                <div id="sesion">
-                    <label for="usuariolabel">Hola! Bienvenid@: </label>
-                    <span id="aqui"></span>
-                    <a href='#' id='registrate'>Registrate</a>
-                </span>
-                </td> 
-              </tr>   
-            </table> 
-       </form>
-    </header>
+        <div class="master">
+          <div class="controles">
+            <button onclick="CalularDatos()" id="on">Iniciar Simulación</button>
+            <button onclick="DetenerSimulacion()" id="off">Detener</button>
+            <button id="eraser" onclick="Limpiar()">Limpiar</button>
+          </div>
+          <br>
 
-    <div class="left-sidebar" >Left Sidebar</div>
-    <main ></main>
-    <div class="right-sidebar" >Right Sidebar</div>
-    <footer >Footer Content — Header.com 2020</footer>
+          <div class="rpm">
+            <div>
+            <label for="name">Rpm:</label>
 
+            <input
+              type="number"
+              id="txt-rpm"
+              required
+              minlength="4"
+              maxlength="8"
+              size="10"
+            />
+          </div>
 
-    
-    
+          <div class="radio-rpm">
 
-    <script>
-        //colocar los valores dentro del html
-        $('#sesion #usuario').text(localStorage.usuario);
-        const btnreg = document.querySelector('a#registrate');
+            <div>
+              <input name="bajo" type="radio" id="rpmbajo" value="95" onclick="checkRadio(name)">
+              <label for="contactChoice2">RPM Bajo</label>
+            </div>
+            <div>
+              <input name="medio" type="radio" id="rpmmedio" value="135" onclick="checkRadio(name)">
+              <label for="contactChoice3">RPM Medio</label>
+            </div>
    
-    
-
-        var c =  localStorage.usuario
-
-        if(typeof c !== 'undefined'){
-
-       
-            btnreg.textContent = "Cerrar sesion";
-         //Cerrar sesion 
-        $('#registrate').click(function(){
-           
-           
-            localStorage.clear();
-            window.location = "login_register.html";
-        });
-
-        alert("funciona");
+            <div>
+              <input name="alto" type="radio" id="rpmalto" value="203" onclick="checkRadio(name)">
+              <label for="contactChoice1">RPM Alto</label>
+            </div>
       
+          </div>
+
+          </div>
+
+          <div class="calculos-contenedor">
+            <h3>Clase 17 | Cuerpos en Movimiento</h3>
+            <br>
+
+            <div class="flex-calculos">
 
 
-        }
+              <div>
+                <label for="name">Velocidad Angular:</label>
+                <input readonly type="number" id="txtVelocidadAngular" style="width: 90px;"/>
+                <label style="font-size: 10px;">rad/s</label>
+              </div>
 
-        $('#registrate').click(function(){
-            window.location = "login_register.html";
-        });
+              <div>
+                <label for="name">Desplazamiento angular:</label>
+                <input readonly type="number" id="txtDesplazamientoAngular" style="width: 90px;"/>
+                <label style="font-size: 10px;">rad</label>
+                <div style="font-size: 10px;">Despues de 7 segundos</div>
+              </div>
+
+              <div>
+                <label for="name">Aceleración angular:</label>
+                <input readonly type="number" id="txtAceleracionAngular" style="width: 90px;"/>
+                <label style="font-size: 10px;">rad/s^2</label>
+                <div style="font-size: 10px;">Partiendo del reposo</div>
+              </div>
+
+              <div>
+                <label for="name">Velocidad angular media:</label>
+                <input readonly type="number" id="txtVAngularMedia" style="width: 90px;"/>
+                <label style="font-size: 10px;">rad/s</label>
+                <div style="font-size: 10px;">Partiendo del reposo</div>
+              </div>
+
+              <div>
+                <label for="name">Velocidad Tangencial:</label>
+                <input readonly type="number" id="txtVelcidadTangencial" style="width: 90px;"/>
+                <label style="font-size: 10px;">m/s</label>
+                <div style="font-size: 10px;">radio = 0.66 m</div>
+              </div>
+
+              <div>
+                <label for="name">Aceleración Tangencial:</label>
+                <input readonly type="number" id="txtAceleracionTangencial" style="width: 90px;"/>
+                <label style="font-size: 10px;">m/s^2</label>
+                <div style="font-size: 10px;">radio = 0.66 m</div>
+              </div>
+
+              <div>
+                <label for="name">Aceleración Centrípeta:</label>
+                <input readonly type="number" id="txtCentripetaTangencial" style="width: 90px;"/>
+                <label style="font-size: 10px;">m/s^2</label>
+                <div style="font-size: 10px;">radio = 0.66 m</div>
+              </div>
+
+              <div>
+                <label for="name">Energía cinética en el movimiento de rotación:</label>
+                <input readonly type="number" id="txtEnergiaCinetica" style="width: 90px;"/>
+                <label style="font-size: 10px;">J</label>
+              
+              </div>
 
 
-        document.getElementById("aqui").textContent = c;
-
-        window.addEventListener('beforeunload', function (e) {
-       
-       localStorage.clear();
-   });
 
 
-    </script>
+            </div>
+
+            <br>
+
+            <hr>
+
+            <br>
+            <h3>Clase 18 | Cuerpos en Movimiento</h3>
+            <br>
+
+            <div class="flex-calculos">
+
+
+              <div>
+                <label for="name">Torque:</label>
+                <input readonly type="number" id="txtTorque" style="width: 110px;"/>
+                <label style="font-size: 10px;">N*m</label>
+              </div>
+
+              <div>
+                <label for="name">Fuerza Tangencial</label>
+                <input readonly type="number" id="txtFuerzaTangencial" style="width: 110px;"/>
+                <label style="font-size: 10px;">N</label>
+              </div>
+
+              <div>
+                <label for="name">Fuerza Radial:</label>
+                <input readonly type="number" id="txtFuerzaRadial" style="width: 110px;"/>
+                <label style="font-size: 10px;">N</label>
+              </div>
+
+              <div>
+                <label for="name">Trabajo Rotacional:</label>
+                <input readonly type="number" id="txtTrabajoRotacional" style="width: 110px;"/>
+                <label style="font-size: 10px;">J</label>
+              </div>
+
+              <div>
+                <label for="name">Potencia:</label>
+                <input readonly type="number" id="txtPotencia" style="width: 110px;"/>
+                <label style="font-size: 10px;">W</label>
+              </div>
+
+             
+
+
+            </div>
+
+
+            <br>
+            
+            <hr>
+
+            <br>
+            <h3>Clase 19 | Energía</h3>
+            <br>
+
+            <div class="flex-calculos">
+
+
+              <div>
+                <label for="name">Conservacion de la energia de movimiento de rotacion:</label>
+                <input readonly type="number" id="txtConservacionEnergia" style="width: 90px;"/>
+                <label style="font-size: 10px;">rad/s</label>
+              </div>
+
+              <div>
+                <label for="name">Momento angular o momento cinetico:</label>
+                <input readonly type="number" id="txtMomentoAngular" style="width: 110px;"/>
+                <label style="font-size: 10px;">Kg m/s^2</label>
+              </div>
 
 
 
-    <!-- Agregando Scripts Bootstrap -->
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy" crossorigin="anonymous"></script>
-    <script src="js/index.js"></script>
+            </div>
 
-</body>
+
+
+        
+
+          </div>
+        </div>
+      </main>
+
+      <footer class="purple section"></footer>
+    </div>
+
+    <script src="js/script.js"></script>
+  </body>
 </html>
