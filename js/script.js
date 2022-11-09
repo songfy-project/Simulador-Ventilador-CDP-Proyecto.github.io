@@ -1,5 +1,6 @@
 const CalularDatos = () =>{
 
+    let tiempotxt = document.getElementById("txtTiempo");
 
     let rpmValue = document.getElementById("txt-rpm").value; 
     let aspaGiratoria = document.getElementById("aspa-giratoria");
@@ -24,25 +25,39 @@ const CalularDatos = () =>{
 
     /* Calculos  */ 
 
+ 
+
     /* Velocidad Angular */
     let f = (rpmValue / 60) * 2 * Math.PI; /* Conversion a Hz*/
     velocidadAngular.value = f.toFixed(3);
 
-    /* Desplazamiento angular */
-    let desplazamientoA = f.toFixed(3) * 7;
-    desplazamientoAngular.value = desplazamientoA.toFixed(3);
+
+    /* Velociddad Tangencial */
+    let vt = f.toFixed(3) * 0.66;
+    vTangencial.value = vt.toFixed(3);
+
+
+    
+       /* Tiempo Usado */
+       let calculoTiempo = 0.66*2*Math.PI;
+       let tiempo = calculoTiempo / vt;
+       tiempotxt.value = tiempo.toFixed(2);
+
+        /* Desplazamiento angular */
+        let desplazamientoA = f.toFixed(3) * tiempotxt.value;
+        desplazamientoAngular.value = desplazamientoA.toFixed(3);
+
+
 
     /* Aceleracion Angular */
-    let aceleracionA = (f.toFixed(3) - 0)/7;
+    let aceleracionA = (f.toFixed(3))/ tiempotxt.value;
     aceleracionAngular.value = aceleracionA.toFixed(3);
 
     /*Velocidad Angular Media */
     let velocidadAM = 1/2*(f.toFixed(3) + 0);
     vAngularMedia.value = velocidadAM.toFixed(3);
 
-    /* Velociddad Tangencial */
-    let vt = f.toFixed(3) * 0.66;
-    vTangencial.value = vt.toFixed(3);
+ 
                                          
     /* Aceleracion Tangencial */
     let at = aceleracionA.toFixed(3) * 0.66;
@@ -95,7 +110,6 @@ const CalularDatos = () =>{
     MomentoAngularCalculo = inerciaTotal * f;
     MomentoAngular.value = MomentoAngularCalculo.toFixed(3);
 
-    
 
     if (rpmValue == 203) {
 
